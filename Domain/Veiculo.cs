@@ -1,9 +1,13 @@
-namespace CadastroVeiculo;
+namespace CarLog.Domain;
 
-
-public class Veiculos()
+public class Veiculo
 {
-    public int Id { get; set; }
+    public Veiculo()
+    {
+        ExternalId = Guid.NewGuid();
+    }
+
+    public Guid ExternalId { get; set; }
 
     public string Placa { get; set; }
 
