@@ -1,12 +1,12 @@
-using CadastroVeiculo;
+using CarLog.Domain;
 
-namespace Repositorio;
+namespace CarLog.Infrastructure.Repository;
 
 public class RepositorioVeiculo()
 {
 
-    public List<Veiculos> veiculo = new List<Veiculos>();
-    
+    public List<Veiculo> veiculo = new List<Veiculo>();
+
     public void CadastroVeiculo()
     {
         Console.Clear();
@@ -16,7 +16,7 @@ public class RepositorioVeiculo()
         Console.WriteLine("-------------------------------------------------------------");
 
         Console.WriteLine("  PLACA");
-        var placa = Console.ReadLine(); 
+        var placa = Console.ReadLine();
         Console.Write(Environment.NewLine);
 
         Console.WriteLine("  FABRICANTE");
@@ -43,8 +43,7 @@ public class RepositorioVeiculo()
         var localbase = Console.ReadLine();
         Console.Write(Environment.NewLine);
 
-        var veiculocadastro = new Veiculos();
-        veiculocadastro.Id = veiculo.Count + 1;
+        var veiculocadastro = new Veiculo();
         veiculocadastro.Placa = placa;
         veiculocadastro.Fabricante = fabricante;
         veiculocadastro.Modelo = modelo;
@@ -59,15 +58,15 @@ public class RepositorioVeiculo()
         Console.WriteLine("  VEÍCULO CADASTRADO COM SUCESSO, PRESSIONE [ENTER]");
         ImprimirVeiculos(veiculocadastro);
         Console.ReadKey();
-        
+
 
     }
 
 
-    public void ImprimirVeiculos(Veiculos veiculoscadastrado)
-    { 
+    public void ImprimirVeiculos(Veiculo veiculoscadastrado)
+    {
         Console.WriteLine("**********************************************************");
-        Console.WriteLine("  ID...............: " + veiculoscadastrado.Id);
+        Console.WriteLine("  ID...............: " + veiculoscadastrado.ExternalId);
         Console.WriteLine("  PLACA............: " + veiculoscadastrado.Placa);
         Console.WriteLine("  FABRICANTE.......: " + veiculoscadastrado.Fabricante);
         Console.WriteLine("  MODELO...........: " + veiculoscadastrado.Modelo);
@@ -78,7 +77,7 @@ public class RepositorioVeiculo()
         Console.WriteLine("  LOCAL BASE.......: " + veiculoscadastrado.LocaBase);
         Console.WriteLine("  CADASTRADO EM....: " + veiculoscadastrado.CadastradoEm);
         Console.WriteLine("**********************************************************");
-        
+
     }
 
     public void ExibirVeiculos()
@@ -103,9 +102,9 @@ public class RepositorioVeiculo()
     {
         var login = "adm";
         int senha = 123;
-       
+
         Console.Clear();
-        
+
         Console.WriteLine("  LOGIN");
         var loginuser = Console.ReadLine();
 
@@ -224,24 +223,24 @@ public class RepositorioVeiculo()
         }
     }
 
-    
+
     public void Lerdados()
     {
         if (File.Exists("VeiculosBD.txt"))
         {
             var dados = File.ReadAllText("VeiculosBD.txt");
-            var clientesarquivo = System.Text.Json.JsonSerializer.Deserialize<List<Veiculos>>(dados);
+            var clientesarquivo = System.Text.Json.JsonSerializer.Deserialize<List<Veiculo>>(dados);
 
             veiculo.AddRange(clientesarquivo);
         }
     }
-    
-    
-    
+
+
+
     public void GravarDados()
     {
         var Json = System.Text.Json.JsonSerializer.Serialize(veiculo);
-        File.WriteAllText("VeiculosBD.txt",Json);
+        File.WriteAllText("VeiculosBD.txt", Json);
     }
 
 }
