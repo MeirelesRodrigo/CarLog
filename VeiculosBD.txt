@@ -1,0 +1,1 @@
+[{"Id":1,"Placa":"jwf1529","Fabricante":"2024","Modelo":"2024","AnoFabricacao":2024,"Km":2024,"Status":"a","LocaBase":"aa","CadastradoEm":"2024-03-14T10:55:54.4625088-03:00"}]
