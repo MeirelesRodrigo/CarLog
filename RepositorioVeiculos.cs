@@ -101,93 +101,127 @@ public class RepositorioVeiculo()
 
     public void EditarVeiculos()
     {
-        Console.Clear();
-        Console.WriteLine("  INFORME A PLACA DO VEÍCULO");
-        var placapesquisa = Console.ReadLine();
-
-        var veiculocadastrado = veiculo.FirstOrDefault(v => v.Placa == placapesquisa); 
-
-        if(veiculocadastrado == null)
-        {
-            Console.WriteLine("VEÍCULO NÃO ENCONTRADO");
-            Console.ReadKey();
-            return;
-        }
-        Console.WriteLine("-------------------------------------------------------------");
-        Console.WriteLine("                             CAR LOG                         ");
-        Console.WriteLine("                       VEÍCULO ENCONTRADADO                  ");
-        Console.WriteLine("-------------------------------------------------------------");
+        var login = "adm";
+        int senha = 123;
        
-        ImprimirVeiculos(veiculocadastrado);
-
-        Console.WriteLine("  PLACA");
-        var placa = Console.ReadLine();
-        Console.Write(Environment.NewLine);
-
-        Console.WriteLine("  FABRICANTE");
-        var fabricante = Console.ReadLine();
-        Console.Write(Environment.NewLine);
-
-        Console.WriteLine("  MODELO");
-        var modelo = Console.ReadLine();
-        Console.Write(Environment.NewLine);
-
-        Console.WriteLine("  ANO DE FABRICAÇÃO");
-        var anofabricacao = int.Parse(Console.ReadLine());
-        Console.Write(Environment.NewLine);
-
-        Console.WriteLine("  KM");
-        var km = decimal.Parse(Console.ReadLine());
-        Console.Write(Environment.NewLine);
-
-        Console.WriteLine("  STATUS");
-        var status = Console.ReadLine();
-        Console.Write(Environment.NewLine);
-
-        Console.WriteLine("  LOCAL-BASE");
-        var localbase = Console.ReadLine();
-        Console.Write(Environment.NewLine);
-
-        veiculocadastrado.Placa = placa;
-        veiculocadastrado.Fabricante = fabricante;
-        veiculocadastrado.AnoFabricacao = anofabricacao;
-        veiculocadastrado.Km = km;
-        veiculocadastrado.Status = status;
-        veiculocadastrado.LocaBase = localbase;
-
-
         Console.Clear();
-        Console.WriteLine("-------------------------------------------------------------");
-        Console.WriteLine("                             CAR LOG                         ");
-        Console.WriteLine("                      VEÍCULO EDITADO COM SUCESSO            ");
-        Console.WriteLine("-------------------------------------------------------------");
-        ImprimirVeiculos(veiculocadastrado);
-        Console.ReadKey();
         
+        Console.WriteLine("  LOGIN");
+        var loginuser = Console.ReadLine();
+
+        Console.WriteLine("  SENHA");
+        var senhauser = Console.ReadLine();
+
+        if (login == loginuser && senha == int.Parse(senhauser))
+        {
+            Console.Clear();
+            Console.WriteLine("  INFORME A PLACA DO VEÍCULO");
+            var placapesquisa = Console.ReadLine();
+
+            var veiculocadastrado = veiculo.FirstOrDefault(v => v.Placa == placapesquisa);
+
+            if (veiculocadastrado == null)
+            {
+                Console.WriteLine("VEÍCULO NÃO ENCONTRADO");
+                Console.ReadKey();
+                return;
+            }
+            Console.WriteLine("-------------------------------------------------------------");
+            Console.WriteLine("                             CAR LOG                         ");
+            Console.WriteLine("                       VEÍCULO ENCONTRADADO                  ");
+            Console.WriteLine("-------------------------------------------------------------");
+
+            ImprimirVeiculos(veiculocadastrado);
+
+            Console.WriteLine("  PLACA");
+            var placa = Console.ReadLine();
+            Console.Write(Environment.NewLine);
+
+            Console.WriteLine("  FABRICANTE");
+            var fabricante = Console.ReadLine();
+            Console.Write(Environment.NewLine);
+
+            Console.WriteLine("  MODELO");
+            var modelo = Console.ReadLine();
+            Console.Write(Environment.NewLine);
+
+            Console.WriteLine("  ANO DE FABRICAÇÃO");
+            var anofabricacao = int.Parse(Console.ReadLine());
+            Console.Write(Environment.NewLine);
+
+            Console.WriteLine("  KM");
+            var km = decimal.Parse(Console.ReadLine());
+            Console.Write(Environment.NewLine);
+
+            Console.WriteLine("  STATUS");
+            var status = Console.ReadLine();
+            Console.Write(Environment.NewLine);
+
+            Console.WriteLine("  LOCAL-BASE");
+            var localbase = Console.ReadLine();
+            Console.Write(Environment.NewLine);
+
+            veiculocadastrado.Placa = placa;
+            veiculocadastrado.Fabricante = fabricante;
+            veiculocadastrado.AnoFabricacao = anofabricacao;
+            veiculocadastrado.Km = km;
+            veiculocadastrado.Status = status;
+            veiculocadastrado.LocaBase = localbase;
+
+
+            Console.Clear();
+            Console.WriteLine("-------------------------------------------------------------");
+            Console.WriteLine("                             CAR LOG                         ");
+            Console.WriteLine("                      VEÍCULO EDITADO COM SUCESSO            ");
+            Console.WriteLine("-------------------------------------------------------------");
+            ImprimirVeiculos(veiculocadastrado);
+            Console.ReadKey();
+        }
+        else
+        {
+            Console.WriteLine("LOGIN OU SENHA INCORRETOS, PRESSIONE ENTER");
+            Console.ReadKey();
+        }
     }
 
     public void ExcluirVeiculos()
     {
-
+        var login = "adm";
+        int senha = 123;
 
         Console.Clear();
-        Console.WriteLine("  INFORME A PLACA DO VEÍCULO");
-        var placapesquisa = Console.ReadLine();
 
-        var veiculocadastrado = veiculo.FirstOrDefault(v => v.Placa == placapesquisa);
+        Console.WriteLine("  LOGIN");
+        var loginuser = Console.ReadLine();
 
-        if (veiculocadastrado == null)
+        Console.WriteLine("  SENHA");
+        var senhauser = Console.ReadLine();
+
+        if (login == loginuser && senha == int.Parse(senhauser))
         {
-            Console.WriteLine("VEÍCULO NÃO ENCONTRADO");
+            Console.Clear();
+            Console.WriteLine("  INFORME A PLACA DO VEÍCULO");
+            var placapesquisa = Console.ReadLine();
+
+            var veiculocadastrado = veiculo.FirstOrDefault(v => v.Placa == placapesquisa);
+
+            if (veiculocadastrado == null)
+            {
+                Console.WriteLine("VEÍCULO NÃO ENCONTRADO");
+                Console.ReadKey();
+                return;
+            }
+
+            ImprimirVeiculos(veiculocadastrado);
+            veiculo.Remove(veiculocadastrado);
+            Console.WriteLine("  VEÍCULO EXCLUÍDO COM SUCESSO, PRESSIONE ENTER");
             Console.ReadKey();
-            return;
         }
-
-        ImprimirVeiculos(veiculocadastrado);
-        veiculo.Remove(veiculocadastrado);
-        Console.WriteLine("  VEÍCULO EXCLUÍDO COM SUCESSO, PRESSIONE ENTER");
-        Console.ReadKey();
-
+        else
+        {
+            Console.WriteLine("LOGIN OU SENHA INCORRETOS, PRESSIONE ENTER");
+            Console.ReadKey();
+        }
     }
 
     
